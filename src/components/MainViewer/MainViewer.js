@@ -1,28 +1,30 @@
-import React from 'react';
-import CarouselPane from '../CarouselPane/CarouselPane';
-import styles from './MainViewer.scss';
+import React, { useEffect, useState } from 'react';
+import './MainViewer.scss';
 
+export default function MainViewer({ mainImage }) {
+    const [animeClass, setAnimeClass] = useState('');
+    useEffect(() => {
+        setAnimeClass('zoomInAnimation');
+        setTimeout(() => {
+            setAnimeClass('');
+        }, 400);
+    }, [mainImage]);
 
-export default function MainViewer(props) {
-
-    const { mainImage } = props;
-
-    console.log(mainImage);
-
-    // React.useEffect(()=>{
-
-    // },[mainImage]);
-    
     return (
         <>
-            <div className="rightmaindiv d-flex align-items-center justify-content-center">
-                { mainImage !== "" ?
-                    <img className="rightmainimg" src={mainImage} />    
-                    : <div className="initialText">
+            <div className='rightmaindiv d-flex align-items-center justify-content-center'>
+                {mainImage !== '' ? (
+                    <img
+                        className={'rightmainimg ' + animeClass}
+                        src={mainImage}
+                        alt={mainImage}
+                    />
+                ) : (
+                    <div className='initialText'>
                         Please select a card from the menu
                     </div>
-                }
-            </div> 
+                )}
+            </div>
         </>
     );
 }

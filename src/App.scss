@@ -1,97 +1,322 @@
+$breakpoint-xxxs: 280px;
+$breakpoint-xxs: 380px;
+$breakpoint-xs: 768px;
+$breakpoint-sm: 992px;
+$breakpoint-md: 1200px;
+body {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+html {
+    width: 100vw;
+    height: 100%;
+    float: left;
+    overflow: auto;
+}
+
+div#root {
+    float: left;
+    width: 100%;
+    height: 100%;
+
+    * {
+        box-sizing: border-box;
+    }
+}
+
 .App {
-  text-align: center;
+    text-align: center;
+    float: left;
+    width: 100%;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
-.leftpane{
-  width: 25%;
-  height: 100vh;
-  float: left;
-  background-color: rgb(36,40,46);
+.top-header {
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    color: #fff;
+    z-index: 999999;
+    height: 55px;
+    margin: auto;
+    font-size: 25px;
+    color: #fff;
+    font-weight: 500;
+    width: 100%;
+    padding: 11px;
+    max-width: 400px;
+    transition: max-width 0.4s, color 0.5s;
+
+    .menubar {
+        display: none;
+        float: left;
+        left: 13px;
+        position: absolute;
+        top: 8px;
+        z-index: 99999;
+        cursor: pointer;
+    }
 }
 
-.rightpane{
-  width: 75%;
-  float: left;
+.leftpane {
+    width: 400px;
+    height: 100vh;
+    float: left;
+    background-color: #1c1d1f;
+    padding: 0 25px;
 }
 
-.leftHeader{
-  height: 12.5vh;
-  margin: auto;
-  font-size: x-large;
-  color: #fff;
-  font-weight: 500;
+.rightpane {
+    width: calc(100% - 400px);
+    float: left;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
-}
-
-@media only screen and (max-width: 700px) {
-  .leftpane{
-    width: 100% !important;
-    position: absolute;
-    z-index: 1000;
-    height: 0vh;
-    transition: height 2s;
-    overflow: hidden;
-  }  
-
-  .rightpane{
-    width: 100% !important;
-  }
-
-  .rightmaindiv{
-    height: 90vh !important;
-  }
-
-  .rightmainimg{
-    height: 85vh !important;
-  }
-
-  .MuiSvgIcon-colorPrimary{
-    color: #fff !important;
-  }
-
-  .buyitemsmobile{
-    height: 10vh !important;
-    font-size: xx-large;
-    font-weight: 700;
-  }
-
-  .menubar{
-    float: left;
-    left: 5%;
-    position: absolute;
-  }
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@for $i from 1 through 10 {
+    .animationFlow:nth-child(#{$i}) {
+        animation-duration: $i * 0.2s;
+    }
+}
+
+@for $i from 1 through 50 {
+    .animationFlowFaster:nth-child(#{$i}) {
+        animation-duration: $i * 0.1s;
+    }
+}
+
+@keyframes inputBorder {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.slideFromRightToLeft {
+    animation: slideFromRightToLeft 0.4s 1;
+}
+
+.slideFromLeftToRight {
+    animation: slideFromLeftToRight 0.4s 1;
+}
+
+.completeButtonWrap {
+    float: left;
+    width: 100%;
+    margin-bottom: 25px;
+    animation: fadeIn 0.4s 1;
+}
+
+@keyframes slideFromLeftToRight {
+    from {
+        opacity: 0;
+        transform: translate(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+@keyframes slideFromRightToLeft {
+    from {
+        opacity: 0;
+        transform: translate(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+.lineHeightAnimation {
+    animation: lineHeightAnime 0.4s 1;
+}
+
+@keyframes lineHeightAnime {
+    from {
+        line-height: 0;
+        opacity: 0;
+    }
+
+    to {
+        line-height: 1.3;
+        opacity: 1;
+    }
+}
+
+.topToBottomAnimation {
+    animation: topToBottom 0.4s 1;
+}
+
+@keyframes topToBottom {
+    from {
+        opacity: 0;
+        transform: translate(0, -10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0px);
+    }
+}
+
+.bottomToTopAnimation {
+    animation: bottomToTop 0.4s 1;
+}
+
+.zoomInAnimation {
+    animation: zoomIn 0.4s 1;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fadeInAnimation {
+    animation: fadeIn 0.4s 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bottomToTop {
+    from {
+        opacity: 0;
+        transform: translate(0, 10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0px);
+    }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .leftpane {
+        height: 100% !important;
+        position: absolute;
+        z-index: 1000;
+        width: 100%;
+        transition: transform 0.5s;
+        overflow: hidden;
+        transform: translate(-100%);
+
+        &.active {
+            transform: translate(0%);
+        }
+    }
+
+    .rightpane {
+        width: 100% !important;
+        padding: 0 20px 10px 20px;
+    }
+
+    .rightmaindiv {
+        margin-top: 60px;
+        height: calc(100vh - 90px) !important;
+
+        .rightmainimg {
+            // height: 100%;
+            width: auto !important;
+            max-width: 100%;
+        }
+    }
+
+    // .rightmainimg {
+    //     height: 85vh !important;
+    // }
+
+    .MuiSvgIcon-colorPrimary {
+        color: #fff !important;
+    }
+
+    .buyitemsmobile {
+        height: 55px !important;
+        font-size: xx-large;
+        font-weight: 700;
+    }
+
+    .top-header {
+        max-width: 100%;
+        color: #000;
+
+        &.active {
+            color: #fff;
+            .menubar {
+                svg {
+                    fill: #fff !important;
+                }
+            }
+        }
+
+        .menubar {
+            display: block;
+            svg {
+                fill: #333 !important;
+            }
+        }
+    }
+
+    .leftCarousel {
+        align-items: center;
+        .carousel-pane {
+            max-width: 400px;
+            min-width: 350px;
+        }
+    }
 }

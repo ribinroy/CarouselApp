@@ -46,10 +46,7 @@ export default function CarouselPane(props) {
             {idVal.map((value) => {
                 return (
                     <div className='carousel-pane'>
-                        <CarouselProvider
-                            // naturalSlideWidth={100}
-                            // naturalSlideHeight={125}
-                            totalSlides={value.count}>
+                        <CarouselProvider totalSlides={value.count}>
                             <Slider>
                                 {imagesArray.map((el, index) => {
                                     return el.carousel_id === value.id ? (

@@ -1,15 +1,22 @@
-.rightmaindiv{
+.rightmaindiv {
     height: 100vh;
-}
+    padding: 15px;
 
-.rightmainimg{
-    object-fit: cover;
-    object-position: center;
-    height: 70vh;
-    width: 70%;
-}
+    .rightmainimg {
+        object-fit: contain;
+        object-position: center;
+        /* height: 100%; */
+        width: 100%;
+        float: left;
+        /* flex: 1; */
+        /* height: max-content; */
+        margin: 40px;
+        box-shadow: 0px 0px 30px #333;
+        vertical-align: top;
+    }
 
-.initialText{
-    font-size: x-large;
-    font-weight: 400;
+    .initialText {
+        font-size: 16px;
+        font-weight: 400;
+    }
 }
