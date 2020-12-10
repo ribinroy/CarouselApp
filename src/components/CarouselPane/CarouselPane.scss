@@ -223,8 +223,18 @@ button[disabled] svg {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
+    /* overflow: auto; */
+    /* padding-top: 380px; */
+    flex: 1;
+    flex-wrap: wrap;
+    padding-top: 60px;
+
+    .carousel-pane {
+        float: left;
+        width: 100%;
+    }
 }
 
 .container1 {
