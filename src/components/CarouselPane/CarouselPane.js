@@ -1,9 +1,15 @@
 import React from 'react';
 import './CarouselPane.scss';
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import {
+    CarouselProvider,
+    Slider,
+    Slide,
+    ButtonBack,
+    ButtonNext,
+} from 'pure-react-carousel';
 import { imagesArray } from '../../json/db';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 export default function CarouselPane(props) {
@@ -13,63 +19,78 @@ export default function CarouselPane(props) {
 
     const [idVal, setidVal] = React.useState([]);
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         const idTemp = [];
         const idArrary = [];
         const finalArray = [];
-        imagesArray.forEach(element => {
-            if( idTemp.indexOf(element.carousel_id) === -1 )
-            {
+        imagesArray.forEach((element) => {
+            if (idTemp.indexOf(element.carousel_id) === -1) {
                 idTemp.push(element.carousel_id);
-                idArrary[element.carousel_id] = 1;                
-            }  
-            else{
+                idArrary[element.carousel_id] = 1;
+            } else {
                 idArrary[element.carousel_id] += 1;
-            }  
+            }
         });
-        idTemp.forEach(element => {
+        idTemp.forEach((element) => {
             finalArray.push({
                 id: element,
-                count: idArrary[element]
+                count: idArrary[element],
             });
         });
         console.log(finalArray);
         setidVal(finalArray);
-    },[callbackFunction]);
-    
+    }, [callbackFunction]);
+
     return (
         <>
-        { idVal.map((value)=>{
-            return(
-                <div className='carousel-pane'>
-                <CarouselProvider
-                    // naturalSlideWidth={100}
-                    // naturalSlideHeight={125}
-                        totalSlides={value.count}
-                    >
-                    <Slider>
-                        {imagesArray.map((el, index) => {
-                            return el.carousel_id === value.id ? 
-                            <Slide index={index}>
-                                <div className="container1">
-                                    <img className="image" onClick={()=>callbackFunction(el.image.default)} src={el.image.default} alt={el.image_text} />
-                                    <div className="overlay" onClick={()=>callbackFunction(el.image.default)} >
-                                        <div className="text">{el.image_text}</div>
-                                    </div>
-                                    </div>
-                            </Slide> : null;
-                        })}
-                        </Slider>
-                        <ButtonBack>
-                            <ArrowBackIcon />
-                        </ButtonBack>
-                        <ButtonNext>
-                            <ArrowForwardIcon />
-                        </ButtonNext>
-                    </CarouselProvider>
-            </div> 
-            );
-        }) }
+            {idVal.map((value) => {
+                return (
+                    <div className='carousel-pane'>
+                        <CarouselProvider
+                            // naturalSlideWidth={100}
+                            // naturalSlideHeight={125}
+                            totalSlides={value.count}>
+                            <Slider>
+                                {imagesArray.map((el, index) => {
+                                    return el.carousel_id === value.id ? (
+                                        <Slide index={index}>
+                                            <div className='container1'>
+                                                <img
+                                                    className='image'
+                                                    onClick={() =>
+                                                        callbackFunction(
+                                                            el.image.default
+                                                        )
+                                                    }
+                                                    src={el.image.default}
+                                                    alt={el.image_text}
+                                                />
+                                                <div
+                                                    className='overlay'
+                                                    onClick={() =>
+                                                        callbackFunction(
+                                                            el.image.default
+                                                        )
+                                                    }>
+                                                    <div className='text'>
+                                                        {el.image_text}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Slide>
+                                    ) : null;
+                                })}
+                            </Slider>
+                            <ButtonBack>
+                                <ChevronLeftIcon />
+                            </ButtonBack>
+                            <ButtonNext>
+                                <ChevronRightIcon />
+                            </ButtonNext>
+                        </CarouselProvider>
+                    </div>
+                );
+            })}
         </>
     );
 }
