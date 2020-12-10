@@ -137,13 +137,6 @@ div#root {
     animation: slideFromLeftToRight 0.4s 1;
 }
 
-.completeButtonWrap {
-    float: left;
-    width: 100%;
-    margin-bottom: 25px;
-    animation: fadeIn 0.4s 1;
-}
-
 @keyframes slideFromLeftToRight {
     from {
         opacity: 0;
