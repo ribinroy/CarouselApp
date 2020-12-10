@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './CarouselPane.scss';
 import {
     CarouselProvider,
@@ -12,14 +12,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-export default function CarouselPane(props) {
-    console.log(props);
+export default function CarouselPane({ callbackFunction }) {
+    const [idVal, setidVal] = useState([]);
 
-    const { callbackFunction } = props;
-
-    const [idVal, setidVal] = React.useState([]);
-
-    React.useEffect(() => {
+    useEffect(() => {
         const idTemp = [];
         const idArrary = [];
         const finalArray = [];
@@ -37,20 +33,19 @@ export default function CarouselPane(props) {
                 count: idArrary[element],
             });
         });
-        console.log(finalArray);
         setidVal(finalArray);
     }, [callbackFunction]);
 
     return (
         <>
-            {idVal.map((value) => {
+            {idVal.map((value, index) => {
                 return (
-                    <div className='carousel-pane'>
+                    <div className='carousel-pane' key={index}>
                         <CarouselProvider totalSlides={value.count}>
                             <Slider>
                                 {imagesArray.map((el, index) => {
                                     return el.carousel_id === value.id ? (
-                                        <Slide index={index}>
+                                        <Slide key={index}>
                                             <div className='container1'>
                                                 <img
                                                     className='image'
@@ -75,7 +70,9 @@ export default function CarouselPane(props) {
                                                 </div>
                                             </div>
                                         </Slide>
-                                    ) : null;
+                                    ) : (
+                                        ''
+                                    );
                                 })}
                             </Slider>
                             <ButtonBack>
