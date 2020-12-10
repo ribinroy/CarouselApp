@@ -41,7 +41,10 @@ export default function CarouselPane({ callbackFunction }) {
             {idVal.map((value, index) => {
                 return (
                     <div className='carousel-pane' key={index}>
-                        <CarouselProvider totalSlides={value.count}>
+                        <CarouselProvider
+                            totalSlides={value.count}
+                            dragEnabled={false}
+                            touchEnabled={false}>
                             <Slider>
                                 {imagesArray.map((el, index) => {
                                     return el.carousel_id === value.id ? (

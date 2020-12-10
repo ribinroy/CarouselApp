@@ -79,14 +79,16 @@
     align-items: center;
     height: 4vh;
     width: 4vh;
-    background: #ffffff0d;
+    background: #ffffff1e;
     transition: background 0.4s, transform 0.4s;
-    transform: scale(0.5) translate(-10px);
+    // transform: scale(0.5) translate(-10px);
+    transform: translate(18px);
 
     &.buttonBack___1mlaL {
         left: 0%;
         right: auto;
-        transform: scale(0.5) translate(10px);
+        // transform: scale(0.5) translate(10px);
+        transform: translate(-18px);
         padding-left: 2px;
 
         // svg.MuiSvgIcon-root {
@@ -108,7 +110,7 @@ svg.MuiSvgIcon-root {
 
 .carousel:hover button {
     background: #ffffff2a;
-    transform: scale(1) translate(0px);
+    // transform: scale(1) translate(0px);
     svg.MuiSvgIcon-root {
         fill: #ffffffa1;
     }
@@ -122,7 +124,7 @@ button[disabled] svg {
     position: relative;
     display: block;
     box-sizing: border-box;
-    height: 25vh !important;
+    height: 40vh !important;
     margin: 0;
     list-style-type: none;
     padding-bottom: 1% !important;
@@ -150,9 +152,10 @@ button[disabled] svg {
 .slideInner___2mfX9 img {
     object-fit: cover;
     object-position: center;
-    height: 20vh;
-    min-height: 20vh;
+    height: 36vh;
+    min-height: 36vh;
     width: 100% !important;
+    border-radius: 8px;
 }
 .focusRing___1airF {
     position: absolute;
@@ -235,6 +238,11 @@ button[disabled] svg {
         float: left;
         width: 100%;
     }
+    * {
+        &:focus {
+            outline: none !important;
+        }
+    }
 }
 
 .container1 {
@@ -251,6 +259,7 @@ button[disabled] svg {
 }
 
 .overlay {
+    border-radius: 8px;
     position: absolute;
     top: 0;
     bottom: 0;

@@ -5,12 +5,12 @@ export const imagesArray = [
         image_text: 'Image Text 1',
     },
     {
-        carousel_id: 4,
+        carousel_id: 1,
         image: require('./../assets/Images/image (2).jpg'),
         image_text: 'Image Text 2',
     },
     {
-        carousel_id: 5,
+        carousel_id: 1,
         image: require('./../assets/Images/image (3).jpg'),
         image_text: 'Image Text 3',
     },
@@ -20,7 +20,7 @@ export const imagesArray = [
         image_text: 'Image Text 4',
     },
     {
-        carousel_id: 6,
+        carousel_id: 2,
         image: require('./../assets/Images/image (5).jpg'),
         image_text: 'Image Text 5',
     },
