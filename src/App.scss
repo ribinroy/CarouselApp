@@ -7,6 +7,26 @@
   pointer-events: none;
 }
 
+.leftpane{
+  width: 25%;
+  height: 100vh;
+  float: left;
+  background-color: rgb(36,40,46);
+}
+
+.rightpane{
+  width: 75%;
+  float: left;
+}
+
+.leftHeader{
+  height: 12.5vh;
+  margin: auto;
+  font-size: x-large;
+  color: #fff;
+  font-weight: 500;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -26,6 +46,45 @@
 
 .App-link {
   color: #61dafb;
+}
+
+@media only screen and (max-width: 700px) {
+  .leftpane{
+    width: 100% !important;
+    position: absolute;
+    z-index: 1000;
+    height: 0vh;
+    transition: height 2s;
+    overflow: hidden;
+  }  
+
+  .rightpane{
+    width: 100% !important;
+  }
+
+  .rightmaindiv{
+    height: 90vh !important;
+  }
+
+  .rightmainimg{
+    height: 85vh !important;
+  }
+
+  .MuiSvgIcon-colorPrimary{
+    color: #fff !important;
+  }
+
+  .buyitemsmobile{
+    height: 10vh !important;
+    font-size: xx-large;
+    font-weight: 700;
+  }
+
+  .menubar{
+    float: left;
+    left: 5%;
+    position: absolute;
+  }
 }
 
 @keyframes App-logo-spin {
